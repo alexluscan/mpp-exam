@@ -2,22 +2,24 @@
     "name": "election-app-backend",
     "version": "1.0.0",
     "description": "Backend for the election app",
-    "main": "server.ts",
+    "main": "dist/server.js",
     "scripts": {
-      "dev": "nodemon --watch server.ts --exec ts-node server.ts"
+      "dev": "nodemon server.ts",
+      "build": "tsc",
+      "start": "node dist/server.js"
     },
     "author": "",
     "license": "ISC",
     "dependencies": {
       "cors": "^2.8.5",
       "express": "^4.19.2",
-      "socket.io": "^4.7.5"
+      "socket.io": "^4.7.5",
+      "typescript": "^5.5.3"
     },
     "devDependencies": {
       "@types/cors": "^2.8.17",
       "@types/express": "^4.17.21",
       "nodemon": "^3.1.4",
-      "ts-node": "^10.9.2",
-      "typescript": "^5.5.3"
+      "ts-node": "^10.9.2"
     }
   }

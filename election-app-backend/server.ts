@@ -4,11 +4,13 @@ import { Server } from 'socket.io';
 import cors from 'cors';
 
 const app = express();
-app.use(cors());
+const frontendURL = process.env.FRONTEND_URL || "http://localhost:3001";
+
+app.use(cors({ origin: frontendURL }));
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3001",
+    origin: frontendURL,
     methods: ["GET", "POST"]
   }
 });
@@ -109,6 +111,7 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(4001, () => {
-  console.log('listening on *:4001');
+const PORT = process.env.PORT || 4001;
+server.listen(PORT, () => {
+  console.log(`listening on *:${PORT}`);
 });
